@@ -12,16 +12,16 @@ export default class Game {
   }
 
   gameStart() {
-    const gameResult = setGameResult();
+    const gameResult = this.setGameResult();
     return gameResult;
   }
   
   setGameResult() {
     for (let i = 0; i < this.userInput[GMAE_COUNT]; i++) {
-      const winGameCountArray = setWinGameCount(setGameRandonNumber());
-      this.gameResultObject.gameProcess += `${setProcessTemplete(winGameCountArray, this.userInput[CARS_NAME])}<br/>`;
+      const winGameCountArray = this.setWinGameCount(this.setGameRandonNumber());
+      this.gameResultObject.gameProcess += `${this.setProcessTemplete(winGameCountArray)}<br/>`;
     }
-    this.gameResultObject.gmaeWinner = setGameWinner(this.userInput[CARS_NAME], gameWinCountArray);
+    this.gameResultObject.gmaeWinner = this.setGameWinner();
   
     return this.gameResultObject;
   }
@@ -45,22 +45,22 @@ export default class Game {
     return this.gameWinCountArray;
   }
   
-  setGameWinner(carsName, winGameCountArray) {
-    const topNumber = Math.max(...winGameCountArray);
+  setGameWinner() {
+    const topNumber = Math.max(...this.gameWinCountArray);
     let topNumberCars = "";
-    winGameCountArray.forEach((winNumber, i) => {
+    this.gameWinCountArray.forEach((winNumber, i) => {
       if (winNumber === topNumber) {
-        topNumberCars += `${carsName.split(COMMA)[i]},`;
+        topNumberCars += `${this.userInput[CARS_NAME].split(COMMA)[i]},`;
       }
     })
     
     return topNumberCars.slice(0, -1);
   }
   
-  setProcessTemplete(winGameCountArray, carsName) {
+  setProcessTemplete(winGameCountArray) {
     let result = EMPTY;
-    for (let i = 0; i < carsName.split(COMMA).length; i++) {
-      result += `${carsName.split(COMMA)[i]}: ${gameProcessNumberReplaceText(winGameCountArray[i])}<br/>`;
+    for (let i = 0; i < this.userInput[CARS_NAME].split(COMMA).length; i++) {
+      result += `${this.userInput[CARS_NAME].split(COMMA)[i]}: ${this.gameProcessNumberReplaceText(winGameCountArray[i])}<br/>`;
     }
     
     return result;

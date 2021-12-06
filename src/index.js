@@ -1,4 +1,4 @@
-import { formEvent } from './components/formEvent.js';
+import Render from './components/Render.js';
 import { gameStart } from './components/game.js';
 import { NUMBER, WINNER } from './utils/constant.js';
 import { $, $new } from './utils/dom.js';
@@ -18,4 +18,4 @@ export default class Car {
   } 
 }
 
-formEvent()
+new Render()

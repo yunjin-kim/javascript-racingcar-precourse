@@ -15,7 +15,7 @@ export default class Render {
     for (const eachForm of this.allForm) {
       eachForm.addEventListener("submit", (submitEvent) => {
         submitEvent.preventDefault();
-        if (inputEvent(submitEvent)) {
+        if (this.inputEvent(submitEvent)) {
           new Car(this.inputEvent(submitEvent));
         }
       })

@@ -3,8 +3,7 @@ import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE, ELEMENT_MESSAGE } from '../util
 import { $all, setGameElemetStyle } from '../utils/dom.js';
 
 export default class Render {
-  constructor(userInput) {
-    this.userInput = userInput;
+  constructor() {
     this.allForm = $all("form");
     this.allInput = $all("input");
     this.inputValueArray = [];

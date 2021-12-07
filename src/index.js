@@ -11,10 +11,11 @@ export default class Car {
     this.gameResultSpan = $new("span");
     this.Game = new Game(userInput)
     this.gameResultSpan.id = "racing-winners";
+    console.log(this.gameResultSpan)
     this.gameResultSpan.style.opacity = NUMBER.ZERO;
-    gameResultDiv.innerHTML = `${this.Game.gameProcess}\n ${WINNER}: ${this.Game.gmaeWinner} `;
-    gameResultSpan.textContent = this.Game.gmaeWinner;
-    gameResultWrap.append(gameResultDiv, gameResultSpan);
+    this.gameResultDiv.innerHTML = `${this.Game.gameResultObject.gameProcess}\n ${WINNER}: ${this.Game.gameResultObject.gmaeWinner} `;
+    this.gameResultSpan.textContent = this.Game.gameResultObject.gmaeWinner;
+    this.gameResultWrap.append(this.gameResultDiv, this.gameResultSpan);
   } 
 }
 

@@ -6,39 +6,40 @@ export default class Render {
   constructor() {
     this.allForm = $all("form");
     this.allInput = $all("input");
-    this.inputValueArray = [];
     this.formEvent();
   }
 
   formEvent() {
-    // setGameElemetStyle(ELEMENT_MESSAGE.BEFORE_GAME);
+    setGameElemetStyle(ELEMENT_MESSAGE.BEFORE_GAME);
     for (const eachForm of this.allForm) {
       eachForm.addEventListener("submit", (submitEvent) => {
         submitEvent.preventDefault();
-        if (this.inputEvent(submitEvent)) {
-          new Car(this.inputEvent(submitEvent));
+        const inputEventResult =  this.inputEvent(submitEvent);
+        if (inputEventResult) {
+          new Car(inputEventResult);
         }
       })
     }
   }
 
-  inputEvent(submitEvent) {;
+  inputEvent(submitEvent) {
+    const inputValueArray = [];
     for (const eachInput of this.allInput) {
-      this.inputValueArray.push(eachInput.value);
+      inputValueArray.push(eachInput.value);
     }
-    const inputCheckResult = this.inputCheck(submitEvent);
+    const inputCheckResult = this.inputCheck(submitEvent, inputValueArray);
     if (inputCheckResult) {
-      return this.inputValueArray;
+      return inputValueArray;
     }
   }
 
-  inputCheck(submitEvent) {
+  inputCheck(submitEvent, inputValueArray) {
     let gameCountCheckResult;
     if (submitEvent.target.id === "racing-count-form") {
-      gameCountCheckResult = this.gameCountCheck(this.inputValueArray[GMAE_COUNT]);
+      gameCountCheckResult = this.gameCountCheck(inputValueArray[GMAE_COUNT]);
     }
-    if (this.carNameCheck(this.inputValueArray[CARS_NAME]) && gameCountCheckResult) {
-      // setGameElemetStyle(ELEMENT_MESSAGE.COUNT_INPUT);
+    if (this.carNameCheck(inputValueArray[CARS_NAME]) && gameCountCheckResult) {
+      setGameElemetStyle(ELEMENT_MESSAGE.COUNT_INPUT);
       return gameCountCheckResult;
     }
   }
@@ -66,7 +67,7 @@ export default class Render {
       result = false;
     }
     if (result) {
-      // setGameElemetStyle(ELEMENT_MESSAGE.CARS_INPUT)
+      setGameElemetStyle(ELEMENT_MESSAGE.CARS_INPUT)
       return result;
     }
   }

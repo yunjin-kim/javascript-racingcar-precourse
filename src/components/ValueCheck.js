@@ -1,4 +1,4 @@
-import Render from '../index.js'; 
+import Render from './index.js'; 
 import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE, ELEMENT_MESSAGE } from '../utils/constant.js';
 import { $all, setGameElemetStyle } from '../utils/dom.js';
 

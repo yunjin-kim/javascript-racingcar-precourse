@@ -1,8 +1,8 @@
-import Car from '../index.js'; 
+import Render from '../index.js'; 
 import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE, ELEMENT_MESSAGE } from '../utils/constant.js';
 import { $all, setGameElemetStyle } from '../utils/dom.js';
 
-export default class Render {
+export default class ValueCheck {
   constructor() {
     this.allForm = $all("form");
     this.allInput = $all("input");
@@ -16,7 +16,7 @@ export default class Render {
         submitEvent.preventDefault();
         const inputEventResult =  this.inputEvent(submitEvent);
         if (inputEventResult) {
-          new Car(inputEventResult);
+          new Render(inputEventResult);
         }
       })
     }

@@ -1,9 +1,9 @@
-import Render from './components/Render.js';
-import Game from './components/game.js';
+import ValueCheck from './components/ValueCheck.js';
+import Game from './components/Game.js';
 import { NUMBER, WINNER } from './utils/constant.js';
 import { $, $new } from './utils/dom.js';
 
-export default class Car {
+export default class Render {
   constructor(userInput) {
     this.userInput = userInput;
     this.gameResultWrap = $("racing-result");
@@ -11,7 +11,6 @@ export default class Car {
     this.gameResultSpan = $new("span");
     this.Game = new Game(userInput)
     this.gameResultSpan.id = "racing-winners";
-    console.log(this.gameResultSpan)
     this.gameResultSpan.style.opacity = NUMBER.ZERO;
     this.gameResultDiv.innerHTML = `${this.Game.gameResultObject.gameProcess}\n ${WINNER}: ${this.Game.gameResultObject.gmaeWinner} `;
     this.gameResultSpan.textContent = this.Game.gameResultObject.gmaeWinner;
@@ -19,4 +18,4 @@ export default class Car {
   } 
 }
 
-new Render()
+new ValueCheck()
